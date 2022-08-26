@@ -11,9 +11,8 @@ EOF
 
 # Setup Monitoring for instances
 if [[ `echo ${runners_enable_monitoring}` == "true" ]]; then
-  curl -sSO https://dl.google.com/cloudagents/add-monitoring-agent-repo.sh
-  bash add-monitoring-agent-repo.sh --also-install
-  service stackdriver-agent start
+  curl -sSO https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh
+  sudo bash add-google-cloud-ops-agent-repo.sh --also-install
 
   # using 'EOF' to avoid variable expansion in the bash script https://stackoverflow.com/a/27921346/7167357
   cat > /etc/stackdriver/collect-running-jobs.sh <<- 'EOF'
