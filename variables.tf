@@ -183,7 +183,7 @@ variable "runners_max_builds" {
 variable "runners_image" {
   description = "Image to run builds, will be used in the runner config.toml"
   type        = string
-  default     = "docker:19.03"
+  default     = "docker:20.10"
 }
 
 variable "runners_privileged" {
