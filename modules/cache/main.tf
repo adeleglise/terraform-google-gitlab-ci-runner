@@ -1,8 +1,11 @@
 resource "random_id" "suffix" {
-  count       = var.bucket_name == null ? 1 : 0
+  keepers = {
+    # Generate a new id each time we switch to a new AMI id
+    bucket_name = var.bucket_name
+  }
+
   byte_length = 4
 }
-
 
 #----------------------------
 # create GCS bucket for cache
