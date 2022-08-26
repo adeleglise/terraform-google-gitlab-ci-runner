@@ -1,5 +1,6 @@
 mkdir -p /etc/gitlab-runner
 cat > /etc/gitlab-runner/config.toml <<- EOF
+export DEBIAN_FRONTEND=noninteractive
 
 ${runners_config}
 
@@ -33,6 +34,7 @@ EOF
 fi
 
 ${pre_install}
+curl -L "https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh" | sudo bash
 apt install gitlab-runner -y
 
 if [[ `echo ${runners_executor}` == "docker" ]]
