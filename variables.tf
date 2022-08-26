@@ -34,7 +34,7 @@ variable "subnetwork" {
 variable "runners_machine_type" {
   description = "Instance type used for the GitLab runner."
   type        = string
-  default     = "n1-standard-1"
+  default     = "n1-standard-2"
 }
 
 variable "runners_preemptible" {
@@ -46,7 +46,7 @@ variable "runners_preemptible" {
 variable "runners_disk_size" {
   description = "The size of the created gitlab runner instances in GB."
   type        = number
-  default     = 20
+  default     = 30
 }
 
 variable "runners_disk_type" {
@@ -70,7 +70,7 @@ variable "docker_machine_download_url" {
 variable "docker_machine_machine_type" {
   description = "The Machine Type for the docker-machine instances."
   type        = string
-  default     = "f1-micro"
+  default     = "n1-standard-1"
 }
 
 variable "docker_machine_preemptible" {
