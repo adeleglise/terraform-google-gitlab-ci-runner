@@ -1,6 +1,6 @@
+export DEBIAN_FRONTEND=noninteractive
 mkdir -p /etc/gitlab-runner
 cat > /etc/gitlab-runner/config.toml <<- EOF
-export DEBIAN_FRONTEND=noninteractive
 
 ${runners_config}
 
@@ -30,7 +30,7 @@ EOF
 ${collectd_conf}
 EOF
 
-  service stackdriver-agent restart
+  service google-cloud-ops-agent.service restart
 fi
 
 ${pre_install}
@@ -44,8 +44,8 @@ then
   echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
     $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-  sudo apt-get update
-  sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose
+    sudo apt-get update
+    sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose
     usermod -a -G docker gitlab-runner
     service docker start
 else
