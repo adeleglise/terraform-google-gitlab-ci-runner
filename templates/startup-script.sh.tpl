@@ -72,7 +72,7 @@ else
   echo "Verifying docker-machine and generating SSH keys ahead of time."
   docker-machine create --driver google \
       --google-project ${gcp_project} \
-      --google-machine-type f1-micro \
+      --google-machine-type e2-micro \
       --google-zone ${gcp_zone} \
       --google-service-account ${runners_service_account} \
       --google-scopes https://www.googleapis.com/auth/cloud-platform \
