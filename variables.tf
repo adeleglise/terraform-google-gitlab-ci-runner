@@ -70,7 +70,7 @@ variable "docker_machine_download_url" {
 variable "docker_machine_machine_type" {
   description = "The Machine Type for the docker-machine instances."
   type        = string
-  default     = "e2-micro"
+  default     = "e2-standard-2"
 }
 
 variable "docker_machine_preemptible" {
