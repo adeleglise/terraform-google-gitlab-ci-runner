@@ -34,7 +34,7 @@ variable "subnetwork" {
 variable "runners_machine_type" {
   description = "Instance type used for the GitLab runner."
   type        = string
-  default     = "n1-standard-2"
+  default     = "e2-standard-2"
 }
 
 variable "runners_preemptible" {
@@ -70,7 +70,7 @@ variable "docker_machine_download_url" {
 variable "docker_machine_machine_type" {
   description = "The Machine Type for the docker-machine instances."
   type        = string
-  default     = "n1-standard-1"
+  default     = "e2-micro"
 }
 
 variable "docker_machine_preemptible" {
