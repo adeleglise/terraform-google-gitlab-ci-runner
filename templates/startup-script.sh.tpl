@@ -34,14 +34,17 @@ EOF
 fi
 
 ${pre_install}
-
-curl --fail --retry 6 -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | bash
-yum install ${gitlab_runner_version} -y
+apt install gitlab-runner -y
 
 if [[ `echo ${runners_executor}` == "docker" ]]
 then
   echo 'installing docker'
-    curl --fail --retry 6 -L https://get.docker.com/ |bash
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  echo \
+    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+    $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  sudo apt-get update
+  sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose-plugin docker-compose
     usermod -a -G docker gitlab-runner
     service docker start
 else
@@ -99,7 +102,7 @@ fi
 
 # Install jq if not exists
 if ! [ -x "$(command -v jq)" ]; then
-  yum install jq -y
+  apt install jq -y
 fi
 
 # Get existing token from local file, if exists. Else register new Runner
