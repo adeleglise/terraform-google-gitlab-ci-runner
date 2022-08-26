@@ -84,7 +84,7 @@ resource "google_compute_instance_template" "this" {
 
   // Create a new boot disk from an image
   disk {
-    source_image = "centos-cloud/centos-7"
+    source_image = "debian-cloud/debian-11"
     auto_delete  = true
     boot         = true
     disk_size_gb = var.runners_executor == "docker+machine" ? var.docker_machine_disk_size : var.runners_disk_size
