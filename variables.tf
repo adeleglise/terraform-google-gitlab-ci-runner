@@ -147,7 +147,7 @@ variable "runners_gitlab_url" {
 variable "runners_limit" {
   description = "Limit for the runners, will be used in the runner config.toml."
   type        = number
-  default     = 0
+  default     = 5
 }
 
 variable "runners_concurrent" {
@@ -159,7 +159,7 @@ variable "runners_concurrent" {
 variable "runners_max_growth_rate" {
   description = "(docker-machine) The maximum number of machines that can be added to the runner in parallel. Default is 0 (no limit)."
   type        = number
-  default     = 0
+  default     = 2
 }
 
 variable "runners_idle_time" {
@@ -183,7 +183,7 @@ variable "runners_max_builds" {
 variable "runners_image" {
   description = "Image to run builds, will be used in the runner config.toml"
   type        = string
-  default     = "docker:20.10"
+  default     = "docker:20-dind"
 }
 
 variable "runners_privileged" {
