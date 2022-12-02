@@ -40,6 +40,7 @@ apt install gitlab-runner -y
 if [[ `echo ${runners_executor}` == "docker" ]]
 then
   echo 'installing docker'
+    mkdir -p /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
   echo \
     "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
@@ -142,5 +143,5 @@ sed -i.bak s/__TOKEN_BE_REPLACED__/`echo $token`/g /etc/gitlab-runner/config.tom
 ${post_install}
 
 service gitlab-runner restart
-chkconfig gitlab-runner on
+sudo systemctl enable gitlab-runner on
 
